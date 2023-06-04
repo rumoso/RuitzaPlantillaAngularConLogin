@@ -1,0 +1,73 @@
+<div class="divMain textAlingCenter" style="padding: 30px;">
+    <div class="divTitle-center">
+        {{
+            ( id )
+                ? 'Editar'
+                : 'Nueva'
+        }}
+        {{title}}
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="textAlingCenter" >
+                
+                <br>
+                
+                <form action=""
+                autocomplete="off"
+                [formGroup]="catForm"
+                (ngSubmit)="fn_save()">
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <mat-form-field fxLayout.xs="column"
+                                style="width: 100%;">
+                                <mat-label>nombre:</mat-label>
+                                <input matInput
+                                        type="text"
+                                        formControlName="name">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-4">
+                            <mat-form-field>
+                                <mat-label>Choose a date</mat-label>
+                                <input matInput [matDatepicker]="picker" name="tbxPicker" formControlName="fechaNacimiento">
+                                <mat-hint>MM/DD/YYYY</mat-hint>
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                              </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row top10px">
+                        <div class="col-md-12">
+
+                            <button class="btnLogin colorWhite"
+                                    type="submit"
+                                    [disabled]="catForm.invalid"
+                                    >
+                                    Guardar
+                            </button>
+                            
+                        </div>
+                    </div>
+
+                    <div class="row top20px">
+                        <div class="col-md-12">
+                            <button class="btnLogin label-default colorWhite"
+                                    type="submit"
+                                    (click)="changeRoute('artesG/placasList')">
+                                Cancelar
+                            </button>
+                            
+                        </div>
+                    </div>
+                </form>   
+                
+            </div>
+        </div>
+    </div>    
+</div>
+<app-spinner [hidden]="!bShowSpinner"></app-spinner>
